@@ -335,6 +335,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
     case WM_CLOSE:   DestroyWindow(hWnd); return 0;
     case WM_DESTROY: PostQuitMessage(0);  return 0;
+    case WM_ERASEBKGND:
+        return 1; // не стирать фон — мы сами заливаем чёрным в GrabAndDrawFrame
     }
     return DefWindowProc(hWnd, msg, wParam, lParam);
 }
